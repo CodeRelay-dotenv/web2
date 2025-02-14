@@ -11,8 +11,9 @@ export default defineSchema({
     like:v.optional(v.number()),
   })
   .index("by_user_id",["user_id"]),
-
+  
   questions:defineTable({
+    user_id:v.string(),
     title:v.string(),
     question_detail:v.string(),
     tag:v.union(v.literal('help'),v.literal('admin'),v.literal('study')),
@@ -22,7 +23,7 @@ export default defineSchema({
   answer:defineTable({
     answer_detail:v.string(),
     like:v.optional(v.number()),
-    user_id:v.id("user"),
+    user_id:v.string(),
     question_id:v.id("questions"),
   }),
 
@@ -38,7 +39,7 @@ export default defineSchema({
       searchField: "title",
       filterFields: ["orgId"],
     }),
-  
+    
   userFavourites: defineTable({
     orgId: v.string(),
     userId: v.string(),
