@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 47, "column": 0}, "map": {"version":3,"sources":["file://C%3A/CodeRelay/main/contextCanvas/app/api/upload/route.js"],"sourcesContent":["\r\n// API Route Handler\r\nexport async function GET() {\r\n    // Run the Multer middleware\r\n    return new Response(\"Ho\",{status:200})\r\n}\r\n"],"names":[],"mappings":"AACA,oBAAoB;;;;AACb,eAAe;IAClB,4BAA4B;IAC5B,OAAO,IAAI,SAAS,MAAK;QAAC,QAAO;IAAG;AACxC"}},
+    {"offset": {"line": 57, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
+}

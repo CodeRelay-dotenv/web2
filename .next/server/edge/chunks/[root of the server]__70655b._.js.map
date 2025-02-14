@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 23, "column": 0}, "map": {"version":3,"sources":["turbopack://[project]/middleware.ts"],"sourcesContent":["import { clerkMiddleware } from '@clerk/nextjs/server';\r\n \r\nexport default clerkMiddleware(async (auth, req) => {\r\n  await auth.protect();\r\n});\r\n \r\nexport const config = {\r\n  matcher: [\r\n    '/((?!.*\\\\..*|_next).*)', // Don't run middleware on static files\r\n    '/', // Run middleware on index page\r\n    // '/(api|trpc)(.*)'], // Run middleware on API routes\r\n  ]\r\n};"],"names":[],"mappings":";;;;AAAA;;uCAEe,CAAA,GAAA,6KAAA,CAAA,kBAAe,AAAD,EAAE,OAAO,MAAM;IAC1C,MAAM,KAAK,OAAO;AACpB;AAEO,MAAM,SAAS;IACpB,SAAS;QACP;QACA;KAED;AACH"}},
+    {"offset": {"line": 38, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
+}
