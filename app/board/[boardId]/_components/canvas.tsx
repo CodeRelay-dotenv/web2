@@ -29,7 +29,7 @@ import {
 } from "@/types/canvas";
 import { LiveObject } from "@liveblocks/client";
 import { nanoid } from "nanoid";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { CursorPresence } from "./cursorPresence";
 import { Info } from "./info";
 import { LayerPreview } from "./layerPreview";
@@ -48,6 +48,8 @@ interface CanvasProps {
 }
 
 export const Canvas = ({ boardId }: CanvasProps) => {
+  const activeTouches = new Set<number>(); //set hai
+
   const layerIds = useStorage((root) => root.layerIds);
   const pencilDraft = useSelf((self) => self.presence.pencilDraft);
 
@@ -329,6 +331,13 @@ export const Canvas = ({ boardId }: CanvasProps) => {
 
   const handlePointerDown = useCallback(
     (e: React.PointerEvent) => {
+      if (e.pointerType === "touch"){
+        activeTouches.add(e.pointerId);
+        if(activeTouches.size > 1){
+          return;
+        }
+      }
+
       const point = pointerEventToCanvasPoint(e, camera);
 
       if (canvasState.mode === CanvasMode.Inserting) return;
@@ -348,6 +357,9 @@ export const Canvas = ({ boardId }: CanvasProps) => {
 
   const handlePointerUp = useMutation(
     ({}, e) => {
+      if (e.pointerType === "touch"){
+        activeTouches.delete(e.pointerId);
+      }
       const point = pointerEventToCanvasPoint(e, camera);
 
       if (
@@ -406,6 +418,72 @@ export const Canvas = ({ boardId }: CanvasProps) => {
     [setCanvasState, camera, history, canvasState.mode]
   );
 
+  const [initialTouches, setInitialTouches] = useState<{
+    midpoint: Point;
+    clientX1: number;
+    clientY1: number;
+    clientX2: number;
+    clientY2: number;
+  } | null>(null);
+
+  // Handle touch start (two fingers)
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    if (e.touches.length === 2) {
+      const touch1 = e.touches[0];
+      const touch2 = e.touches[1];
+      const midpoint = {
+        x: (touch1.clientX + touch2.clientX) / 2,
+        y: (touch1.clientY + touch2.clientY) / 2,
+      };
+      setInitialTouches({
+        midpoint,
+        clientX1: touch1.clientX,
+        clientY1: touch1.clientY,
+        clientX2: touch2.clientX,
+        clientY2: touch2.clientY,
+      });
+    }
+  }, []);
+
+  // Handle touch move (two fingers)
+  const handleTouchMove = useCallback(
+    (e: React.TouchEvent) => {
+      if (e.touches.length === 2 && initialTouches) {
+        const touch1 = e.touches[0];
+        const touch2 = e.touches[1];
+        const newMidpoint = {
+          x: (touch1.clientX + touch2.clientX) / 2,
+          y: (touch1.clientY + touch2.clientY) / 2,
+        };
+
+        // Calculate delta from initial midpoint
+        const dx = newMidpoint.x - initialTouches.midpoint.x;
+        const dy = newMidpoint.y - initialTouches.midpoint.y;
+
+        // Update camera position
+        setCamera((camera) => ({
+          x: camera.x + dx,
+          y: camera.y + dy,
+        }));
+
+        // Update initial touches for next move event
+        setInitialTouches({
+          midpoint: newMidpoint,
+          clientX1: touch1.clientX,
+          clientY1: touch1.clientY,
+          clientX2: touch2.clientX,
+          clientY2: touch2.clientY,
+        });
+      }
+    },
+    [initialTouches]
+  );
+
+  // Handle touch end
+  const handleTouchEnd = useCallback(() => {
+    setInitialTouches(null);
+  }, []);
+
   const deleteLayers = useDeleteLayers();
 
   useEffect(() => {
@@ -445,14 +523,18 @@ export const Canvas = ({ boardId }: CanvasProps) => {
         canUndo={canUndo}
         canRedo={canRedo}
       />
-      <SelectionTools camera={camera} setLastUsedColor={setLastUsedColor} />
+      <SelectionTools camera={camera} lastUsedColor={lastUsedColor} setLastUsedColor={setLastUsedColor} setCanvasState={setCanvasState} />
       <svg
         className="h-[100vh] w-[100vw]"
         onWheel={handleWheel}
+        
         onPointerMove={handlePointerMove}
         onPointerLeave={handlePointerLeave}
         onPointerUp={handlePointerUp}
         onPointerDown={handlePointerDown}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
       >
         <g
           style={{
