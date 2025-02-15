@@ -28,6 +28,7 @@ export function QuestionCard(props) {
                             <ChevronRightIcon className="ml-auto h-6 w-6" />
                             Tag - {props.tag}
                             <div className="ml-auto h-6 w-6" />
+                            Category - {props.category}
                         </CardTitle>
                         <CardDescription>{props.content}</CardDescription>
                     </CardHeader>

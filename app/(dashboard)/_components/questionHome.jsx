@@ -292,6 +292,7 @@ export default function Question() {
                                     id={page._id}
                                     key={`${page._id}`}
                                     tag={page.tag}
+                                    category={page.category}
                                 ></QuestionCard>
                             )
                         }
