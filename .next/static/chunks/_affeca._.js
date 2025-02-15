@@ -1859,6 +1859,15 @@ function QuestionCard(props) {
                                     fileName: "[project]/components/question-card.jsx",
                                     lineNumber: 28,
                                     columnNumber: 29
+                                }, this),
+                                "Tag - ",
+                                props.tag,
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "ml-auto h-6 w-6"
+                                }, void 0, false, {
+                                    fileName: "[project]/components/question-card.jsx",
+                                    lineNumber: 30,
+                                    columnNumber: 29
                                 }, this)
                             ]
                         }, void 0, true, {
@@ -1870,7 +1879,7 @@ function QuestionCard(props) {
                             children: props.content
                         }, void 0, false, {
                             fileName: "[project]/components/question-card.jsx",
-                            lineNumber: 30,
+                            lineNumber: 32,
                             columnNumber: 25
                         }, this)
                     ]
@@ -2380,6 +2389,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navi
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useApiMutation$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/hooks/useApiMutation.ts [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$convex$2f$_generated$2f$api$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/convex/_generated/api.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$convex$2f$dist$2f$esm$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$module__evaluation$3e$__ = __turbopack_import__("[project]/node_modules/convex/dist/esm/react/index.js [app-client] (ecmascript) <module evaluation>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$zod$2f$lib$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/zod/lib/index.mjs [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$swr$2f$dist$2f$infinite$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/swr/dist/infinite/index.mjs [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$radix$2d$ui$2f$react$2d$icons$2f$dist$2f$react$2d$icons$2e$esm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/@radix-ui/react-icons/dist/react-icons.esm.js [app-client] (ecmascript)");
@@ -2388,6 +2398,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hoo
 ;
 var _s = __turbopack_refresh__.signature();
 "use client";
+;
 ;
 ;
 ;
@@ -2417,7 +2428,8 @@ const formSchema = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$
         message: "Content must be at least 4 characters."
     }).max(500, {
         message: "Content must be less than 500 characters."
-    })
+    }),
+    tag: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$zod$2f$lib$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__.string()
 });
 function Question() {
     _s();
@@ -2433,12 +2445,14 @@ function Question() {
     const [isOpen, setIsOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [connect, setIsConnect] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(true);
     const { mutate: createQuestion, isLoading2 } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useApiMutation$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useApiMutation"])(__TURBOPACK__imported__module__$5b$project$5d2f$convex$2f$_generated$2f$api$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["api"].qna.createQuestion);
+    const { mutate: searchQuestion, isLoading23 } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useApiMutation$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useApiMutation"])(__TURBOPACK__imported__module__$5b$project$5d2f$convex$2f$_generated$2f$api$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["api"].qna.searchQuestions);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "Question.useEffect": ()=>{
             if (!submitting) {
                 form.reset({
                     title: "",
-                    content: ""
+                    content: "",
+                    tag: ""
                 });
                 setIsOpen(false);
             }
@@ -2452,7 +2466,7 @@ function Question() {
         createQuestion({
             title: values.title,
             question_detail: values.content,
-            tag: "admin"
+            tag: values.tag
         }).then((question)=>{
             console.log("Bangya Question 2", question);
         }).catch(()=>{
@@ -2465,9 +2479,7 @@ function Question() {
     const getKey = (pageIndex, previousPageData)=>{
         if (previousPageData && !previousPageData.length) return null;
         const search = [];
-        if (searchDebounce) search.push(`title=${searchDebounce}`);
-        if (pageIndex === 0) return `/api/questions/get${search && `?${search.join("&")}`}`;
-        return `/api/questions/get?cursor=${previousPageData[previousPageData.length - 1].id}${search && `&${search.join("&")}`}`;
+        if (searchDebounce) {}
     };
     const { mutate: createQ, isLoading } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useApiMutation$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useApiMutation"])(__TURBOPACK__imported__module__$5b$project$5d2f$convex$2f$_generated$2f$api$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["api"].qna.getAllQuestion);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
@@ -2504,7 +2516,7 @@ function Question() {
                         children: "Questions"
                     }, void 0, false, {
                         fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
-                        lineNumber: 143,
+                        lineNumber: 148,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2512,7 +2524,7 @@ function Question() {
                         children: "View and answer questions from peers."
                     }, void 0, false, {
                         fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
-                        lineNumber: 144,
+                        lineNumber: 149,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2525,7 +2537,7 @@ function Question() {
                                 onChange: (event)=>setSearchName(event.target.value)
                             }, void 0, false, {
                                 fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
-                                lineNumber: 148,
+                                lineNumber: 153,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Dialog"], {
@@ -2540,19 +2552,19 @@ function Question() {
                                                     className: "w-4 h-4 mr-2"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
-                                                    lineNumber: 157,
+                                                    lineNumber: 162,
                                                     columnNumber: 33
                                                 }, this),
                                                 "Ask Question"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
-                                            lineNumber: 156,
+                                            lineNumber: 161,
                                             columnNumber: 29
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
-                                        lineNumber: 155,
+                                        lineNumber: 160,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DialogContent"], {
@@ -2564,20 +2576,20 @@ function Question() {
                                                         children: "Ask a question"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
-                                                        lineNumber: 163,
+                                                        lineNumber: 168,
                                                         columnNumber: 33
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DialogDescription"], {
                                                         children: "What do you need help with?"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
-                                                        lineNumber: 164,
+                                                        lineNumber: 169,
                                                         columnNumber: 33
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
-                                                lineNumber: 162,
+                                                lineNumber: 167,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$form$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Form"], {
@@ -2595,7 +2607,7 @@ function Question() {
                                                                             children: "Title"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
-                                                                            lineNumber: 178,
+                                                                            lineNumber: 183,
                                                                             columnNumber: 49
                                                                         }, void 0),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$form$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FormControl"], {
@@ -2604,28 +2616,28 @@ function Question() {
                                                                                 ...field
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
-                                                                                lineNumber: 180,
+                                                                                lineNumber: 185,
                                                                                 columnNumber: 53
                                                                             }, void 0)
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
-                                                                            lineNumber: 179,
+                                                                            lineNumber: 184,
                                                                             columnNumber: 49
                                                                         }, void 0),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$form$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FormMessage"], {}, void 0, false, {
                                                                             fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
-                                                                            lineNumber: 185,
+                                                                            lineNumber: 190,
                                                                             columnNumber: 49
                                                                         }, void 0)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
-                                                                    lineNumber: 177,
+                                                                    lineNumber: 182,
                                                                     columnNumber: 45
                                                                 }, void 0)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
-                                                            lineNumber: 173,
+                                                            lineNumber: 178,
                                                             columnNumber: 37
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$form$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FormField"], {
@@ -2637,7 +2649,7 @@ function Question() {
                                                                             children: "Question"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
-                                                                            lineNumber: 194,
+                                                                            lineNumber: 199,
                                                                             columnNumber: 49
                                                                         }, void 0),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$form$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FormControl"], {
@@ -2646,29 +2658,104 @@ function Question() {
                                                                                 ...field
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
-                                                                                lineNumber: 196,
+                                                                                lineNumber: 201,
                                                                                 columnNumber: 53
                                                                             }, void 0)
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
-                                                                            lineNumber: 195,
+                                                                            lineNumber: 200,
                                                                             columnNumber: 49
                                                                         }, void 0),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$form$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FormMessage"], {}, void 0, false, {
                                                                             fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
-                                                                            lineNumber: 201,
+                                                                            lineNumber: 206,
                                                                             columnNumber: 49
                                                                         }, void 0)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
-                                                                    lineNumber: 193,
+                                                                    lineNumber: 198,
                                                                     columnNumber: 45
                                                                 }, void 0)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
-                                                            lineNumber: 189,
+                                                            lineNumber: 194,
                                                             columnNumber: 37
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$form$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FormField"], {
+                                                            control: form.control,
+                                                            name: "tag",
+                                                            render: ({ field })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$form$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FormItem"], {
+                                                                    children: [
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$form$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FormLabel"], {
+                                                                            children: "Tag"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
+                                                                            lineNumber: 215,
+                                                                            columnNumber: 49
+                                                                        }, void 0),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$form$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FormControl"], {
+                                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Select, {
+                                                                                ...field,
+                                                                                children: [
+                                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                                                                        value: "",
+                                                                                        children: "Select a tag"
+                                                                                    }, void 0, false, {
+                                                                                        fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
+                                                                                        lineNumber: 218,
+                                                                                        columnNumber: 53
+                                                                                    }, void 0),
+                                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                                                                        value: "study",
+                                                                                        children: "Study"
+                                                                                    }, void 0, false, {
+                                                                                        fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
+                                                                                        lineNumber: 219,
+                                                                                        columnNumber: 53
+                                                                                    }, void 0),
+                                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                                                                        value: "admin",
+                                                                                        children: "Admin"
+                                                                                    }, void 0, false, {
+                                                                                        fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
+                                                                                        lineNumber: 220,
+                                                                                        columnNumber: 53
+                                                                                    }, void 0),
+                                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                                                                        value: "help",
+                                                                                        children: "Help"
+                                                                                    }, void 0, false, {
+                                                                                        fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
+                                                                                        lineNumber: 221,
+                                                                                        columnNumber: 53
+                                                                                    }, void 0)
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
+                                                                                lineNumber: 217,
+                                                                                columnNumber: 53
+                                                                            }, void 0)
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
+                                                                            lineNumber: 216,
+                                                                            columnNumber: 49
+                                                                        }, void 0),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$form$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FormMessage"], {}, void 0, false, {
+                                                                            fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
+                                                                            lineNumber: 224,
+                                                                            columnNumber: 49
+                                                                        }, void 0)
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
+                                                                    lineNumber: 214,
+                                                                    columnNumber: 49
+                                                                }, void 0)
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
+                                                            lineNumber: 210,
+                                                            columnNumber: 41
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DialogFooter"], {
                                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -2680,54 +2767,54 @@ function Question() {
                                                                         className: "mr-2 h-4 w-4 animate-spin"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
-                                                                        lineNumber: 212,
+                                                                        lineNumber: 235,
                                                                         columnNumber: 49
                                                                     }, this),
                                                                     submitting ? "Asking..." : "Ask question"
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
-                                                                lineNumber: 206,
+                                                                lineNumber: 229,
                                                                 columnNumber: 41
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
-                                                            lineNumber: 205,
+                                                            lineNumber: 228,
                                                             columnNumber: 37
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
-                                                    lineNumber: 169,
+                                                    lineNumber: 174,
                                                     columnNumber: 33
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
-                                                lineNumber: 168,
+                                                lineNumber: 173,
                                                 columnNumber: 29
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
-                                        lineNumber: 161,
+                                        lineNumber: 166,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
-                                lineNumber: 154,
+                                lineNumber: 159,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
-                        lineNumber: 147,
+                        lineNumber: 152,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
-                lineNumber: 142,
+                lineNumber: 147,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2738,17 +2825,18 @@ function Question() {
                         className: "w-auto h-28"
                     }, index, false, {
                         fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
-                        lineNumber: 228,
+                        lineNumber: 251,
                         columnNumber: 25
                     }, this)) : questionData && questionData.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
                     children: [
                         questionData.map((page, pageIndex)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$question$2d$card$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["QuestionCard"], {
                                 title: page.title,
                                 content: page.question_detail,
-                                id: page._id
+                                id: page._id,
+                                tag: page.tag
                             }, `${page._id}`, false, {
                                 fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
-                                lineNumber: 236,
+                                lineNumber: 259,
                                 columnNumber: 33
                             }, this)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -2759,36 +2847,37 @@ function Question() {
                                     className: "mr-2 h-4 w-4 animate-spin"
                                 }, void 0, false, {
                                     fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
-                                    lineNumber: 249,
+                                    lineNumber: 273,
                                     columnNumber: 33
                                 }, this),
                                 "Load More"
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
-                            lineNumber: 244,
+                            lineNumber: 268,
                             columnNumber: 25
                         }, this)
                     ]
                 }, void 0, true)
             }, void 0, false, {
                 fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
-                lineNumber: 225,
+                lineNumber: 248,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/(dashboard)/_components/questionHome.jsx",
-        lineNumber: 141,
+        lineNumber: 146,
         columnNumber: 9
     }, this);
 }
-_s(Question, "2hI7XwrIZmOAJAe6H8Y71DjrGaM=", false, function() {
+_s(Question, "etmg/vJGedlbxwD/0oJDwer/FHM=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"],
         __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$use$2d$toast$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useToast"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$use$2d$debounce$2f$dist$2f$index$2e$module$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useDebounce"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hook$2d$form$2f$dist$2f$index$2e$esm$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useForm"],
+        __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useApiMutation$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useApiMutation"],
         __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useApiMutation$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useApiMutation"],
         __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useApiMutation$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useApiMutation"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$swr$2f$dist$2f$infinite$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"]

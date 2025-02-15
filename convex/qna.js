@@ -34,26 +34,66 @@ export const createUser = mutation({
   },
 });
 
-
 export const searchUser = mutation({
-  args: {
-    },
+  args: { question_id: v.id("questions") },
   handler: async (ctx, args) => {
+    // Ensure the caller is authenticated.
     const identity = await ctx.auth.getUserIdentity();
-    
     if (!identity) {
       throw new Error("Unauthorized");
     }
-    const user_identify = await ctx.db.query("user").withIndex("by_user_id", (q) =>
-        q.eq("user_id", identity.subject)
-      )
-      .unique()
-    
-    return user_identify;
-    
+
+    // Retrieve the answer document using the provided question ID.
+    const answer = await ctx.db.get(args.question_id);
+    if (!answer) {
+      throw new Error("Answer not found");
+    }
+
+    // Instead of calling db.get on answer.user_id (which expects a valid Convex ID),
+    // we query the "users" collection for a document where the "user_id" field matches.
+    const user = await ctx.db
+      .query("user", (q) => q.eq("user_id", answer.user_id))
+      .first();
+
+    if (!user) {
+      throw new Error("User not found");
+    }
+
+    return user;
   },
 });
 
+
+
+
+export const searchUserAnswer = mutation({
+  args: { answer_id: v.id("answer") },
+  handler: async (ctx, args) => {
+    // Ensure the caller is authenticated.
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) {
+      throw new Error("Unauthorized");
+    }
+
+    // Retrieve the answer document using the provided question ID.
+    const answer = await ctx.db.get(args.answer_id);
+    if (!answer) {
+      throw new Error("Answer not found");
+    }
+
+    // Instead of calling db.get on answer.user_id (which expects a valid Convex ID),
+    // we query the "users" collection for a document where the "user_id" field matches.
+    const user = await ctx.db
+       .query("user").filter((q) => q.eq(q.field("user_id"), answer.user_id))
+       .first();
+
+    if (!user) {
+      throw new Error("User not found");
+    }
+
+    return user;
+  },
+});
 
 
 
@@ -111,11 +151,28 @@ export const getAllAnswer = mutation({
       throw new Error("Unauthorized");
     }
     const getanswer = await ctx.db.get(args.question_id)
-
+    
     return getanswer.answers;
 
   },
 });
+
+
+export const searchQuestions = mutation({
+  // The search text is passed as an argument.
+  args: { searchText: v.string() },
+  handler: async (ctx, args)  => {
+    // Use q.search to filter documents by the "title" field.
+    // Note: Make sure that full-text search is enabled on your collection or use an appropriate filter.
+    const results = await ctx.db
+      .query("questions", (q) => q.search("title", args.searchText))
+      .collect();
+    return results;
+  },
+});
+
+
+
 
 export const updateQuestion = mutation({
   args: {
@@ -182,6 +239,10 @@ export const getSpecificAnswer = mutation({
   },
 });
 
+
+
+
+
 export const deleteQuestion = mutation({
   args: {
     id:v.id("questions")
@@ -236,6 +297,19 @@ export const createAnswer = mutation({
       answers: [...getanswer.answers,answerId]
     });
 
+
+    const user = await ctx.db
+    .query("user").filter((q) => q.eq(q.field("user_id"), identity.subject))
+    .first();
+    console.log("Subject---",identity.subject)
+    console.log("Dikkat---",user)
+    const rep = user.reputation;
+    await ctx.db.patch(user._id, {
+      reputation:(rep+2)
+    });
+
+
+
     return answerId;
   },
 });
@@ -267,21 +341,40 @@ export const updateAnswer = mutation({
 export const updateLikeAnswer = mutation({
   args: {
     answer_id: v.id("answer"),
-    like:v.number()
+    
   },
   handler: async (ctx, args) => {
     const identity = await ctx.auth.getUserIdentity();
     if (!identity) throw new Error("Unauthorized");
 
-
+    const data = await ctx.db.get(args.answer_id);
     // Update the answer
+    const likeVal = data.like;
     await ctx.db.patch(args.answer_id, {
-      like:args.like
+      like:(likeVal+1)
+    });
+
+
+    const user = await ctx.db
+      .query("user").filter((q) => q.eq(q.field("user_id"),  data.user_id))
+    .first();
+
+    const rep = user.reputation;
+    await ctx.db.patch(user._id, {
+      reputation:(rep+10)
     });
 
     return {status:200,message:"Successfully updated the like entry"};
   },
 });
+
+
+
+
+
+
+
+
 
 
 //delete answer controller for answer schema

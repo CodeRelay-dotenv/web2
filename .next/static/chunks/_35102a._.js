@@ -192,16 +192,28 @@ var _s = __turbopack_refresh__.signature();
 ;
 ;
 ;
-function Comment({ props }) {
+function Comment({ props, handleNew, dataRef, setDataRef, dataRef2, setDataRef2 }) {
     _s();
     const { mutate: getAnswer, isLoading4 } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useApiMutation$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useApiMutation"])(__TURBOPACK__imported__module__$5b$project$5d2f$convex$2f$_generated$2f$api$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["api"].qna.getSpecificAnswer);
     const [data, setData] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const { mutate: createA } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useApiMutation$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useApiMutation"])(__TURBOPACK__imported__module__$5b$project$5d2f$convex$2f$_generated$2f$api$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["api"].qna.getAllAnswer);
+    const { mutate: getA } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useApiMutation$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useApiMutation"])(__TURBOPACK__imported__module__$5b$project$5d2f$convex$2f$_generated$2f$api$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["api"].qna.searchUserAnswer);
     const [answer, setAnswerData] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [connect, setIsConnect] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(true);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "Comment.useEffect": ()=>{
-            console.log("prop data", typeof props);
+            getA({
+                answer_id: props
+            }).then({
+                "Comment.useEffect": (question)=>{
+                    setAnswerData(question);
+                    console.log("Answer User", question);
+                }
+            }["Comment.useEffect"]).catch({
+                "Comment.useEffect": (err)=>{
+                    console.log("Error in question creation", err);
+                }
+            }["Comment.useEffect"]);
             getAnswer({
                 id: props
             }).then({
@@ -216,8 +228,25 @@ function Comment({ props }) {
             }["Comment.useEffect"]);
         }
     }["Comment.useEffect"], [
-        props
+        props,
+        connect,
+        handleNew
     ]);
+    const { mutate: updateA } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useApiMutation$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useApiMutation"])(__TURBOPACK__imported__module__$5b$project$5d2f$convex$2f$_generated$2f$api$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["api"].qna.updateLikeAnswer);
+    const handleLike = async ()=>{
+        updateA({
+            answer_id: props
+        }).then((question)=>{
+            // setData(question);
+            console.log("Like Done----------", question);
+        }).catch((err)=>{
+            console.log("Error in question creation", err);
+        }).finally(()=>{
+            setIsConnect((prev)=>!prev);
+            setDataRef(!dataRef);
+            setDataRef2(!dataRef2);
+        });
+    };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$parallax$2d$tilt$2f$dist$2f$modern$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
         transitionSpeed: 500,
         tiltMaxAngleX: 4,
@@ -227,7 +256,7 @@ function Comment({ props }) {
         glareEnable: true,
         glareBorderRadius: "0.75rem",
         glareMaxOpacity: 0.17,
-        children: data && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
+        children: data && answer && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
             className: "border border-input bg-transparent shadow-sm hover:text-accent-foreground",
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardHeader"], {
@@ -243,74 +272,110 @@ function Comment({ props }) {
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$radix$2d$ui$2f$react$2d$avatar$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Avatar"], {
                                             className: "h-10 w-10 rounded-full overflow-clip",
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$radix$2d$ui$2f$react$2d$avatar$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AvatarFallback"], {
-                                                className: "font-sans"
+                                                className: "font-sans",
+                                                children: answer.name?.charAt(0).toUpperCase()
                                             }, void 0, false, {
                                                 fileName: "[project]/components/comment.jsx",
-                                                lineNumber: 66,
+                                                lineNumber: 110,
                                                 columnNumber: 37
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/comment.jsx",
-                                            lineNumber: 61,
+                                            lineNumber: 105,
                                             columnNumber: 33
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/comment.jsx",
-                                        lineNumber: 60,
+                                        lineNumber: 104,
                                         columnNumber: 29
                                     }, this),
-                                    "Dummy"
+                                    answer.name,
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        className: "pl-[30px]",
+                                        children: [
+                                            "Reputation Points : ",
+                                            answer.reputation,
+                                            "🪙 "
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/components/comment.jsx",
+                                        lineNumber: 119,
+                                        columnNumber: 29
+                                    }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/comment.jsx",
-                                lineNumber: 56,
-                                columnNumber: 25
+                                lineNumber: 100,
+                                columnNumber: 21
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/comment.jsx",
-                            lineNumber: 55,
+                            lineNumber: 99,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
                             children: data.answer_detail
                         }, void 0, false, {
                             fileName: "[project]/components/comment.jsx",
-                            lineNumber: 77,
+                            lineNumber: 122,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/comment.jsx",
-                    lineNumber: 54,
+                    lineNumber: 98,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardFooter"], {
                     className: "text-sm text-gray-500",
-                    children: new Date(data._creationTime).toLocaleDateString(navigator.language, {
-                        weekday: "long",
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric"
-                    }) + " " + new Date(data._creationTime).toLocaleTimeString(navigator.language)
-                }, void 0, false, {
+                    children: [
+                        new Date(data._creationTime).toLocaleDateString(navigator.language, {
+                            weekday: "long",
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric"
+                        }) + " , " + new Date(data._creationTime).toLocaleTimeString(navigator.language),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "absolute right-[50px]",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                    className: "cursor-pointer hover:text-red-700",
+                                    onClick: handleLike,
+                                    children: " Like "
+                                }, void 0, false, {
+                                    fileName: "[project]/components/comment.jsx",
+                                    lineNumber: 139,
+                                    columnNumber: 29
+                                }, this),
+                                data.like
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/components/comment.jsx",
+                            lineNumber: 138,
+                            columnNumber: 25
+                        }, this)
+                    ]
+                }, void 0, true, {
                     fileName: "[project]/components/comment.jsx",
-                    lineNumber: 79,
+                    lineNumber: 124,
                     columnNumber: 17
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/components/comment.jsx",
-            lineNumber: 53,
-            columnNumber: 21
+            lineNumber: 97,
+            columnNumber: 31
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/comment.jsx",
-        lineNumber: 43,
+        lineNumber: 87,
         columnNumber: 9
     }, this);
 }
-_s(Comment, "EbdAJd8NMKVhBtukaPIZqjIHq/I=", false, function() {
+_s(Comment, "2FSw6ESP8HyU+kZRGn5DFumFux0=", false, function() {
     return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useApiMutation$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useApiMutation"],
+        __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useApiMutation$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useApiMutation"],
         __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useApiMutation$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useApiMutation"],
         __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useApiMutation$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useApiMutation"]
     ];
@@ -947,11 +1012,27 @@ function PageSlug() {
     const [ansData, setAnsData] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [handleNew, setHandleNew] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [first, setFirst] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(true);
+    const [questionUser, setQuestionUser] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [dataRef, setDataRef] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [dataRef2, setDataRef2] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const { mutate: getQuestion, isLoading2 } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useApiMutation$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useApiMutation"])(__TURBOPACK__imported__module__$5b$project$5d2f$convex$2f$_generated$2f$api$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["api"].qna.getSpecificQuestion);
     const { mutate: createAnswer, isLoading3 } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useApiMutation$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useApiMutation"])(__TURBOPACK__imported__module__$5b$project$5d2f$convex$2f$_generated$2f$api$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["api"].qna.createAnswer);
     const { mutate: getAllAnswer, isLoading4 } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useApiMutation$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useApiMutation"])(__TURBOPACK__imported__module__$5b$project$5d2f$convex$2f$_generated$2f$api$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["api"].qna.getAllAnswer);
+    const { mutate: getUser, isLoading5 } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useApiMutation$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useApiMutation"])(__TURBOPACK__imported__module__$5b$project$5d2f$convex$2f$_generated$2f$api$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["api"].qna.searchUser);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "PageSlug.useEffect": ()=>{
+            getUser({
+                question_id: slug
+            }).then({
+                "PageSlug.useEffect": (question)=>{
+                    setQuestionUser(question);
+                    console.log("User Data----", question);
+                }
+            }["PageSlug.useEffect"]).catch({
+                "PageSlug.useEffect": ()=>{
+                    console.log("Error in question creation");
+                }
+            }["PageSlug.useEffect"]);
             getQuestion({
                 id: slug
             }).then({
@@ -1028,6 +1109,23 @@ function PageSlug() {
         timestamp: new Date().toISOString(),
         answers: []
     };
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "PageSlug.useEffect": ()=>{
+            setFirst(true);
+        }
+    }["PageSlug.useEffect"], [
+        dataRef
+    ]);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "PageSlug.useEffect": ()=>{
+            console.log("ojajodjawdk");
+            setHandleNew({
+                "PageSlug.useEffect": (prev)=>!prev
+            }["PageSlug.useEffect"]);
+        }
+    }["PageSlug.useEffect"], [
+        dataRef2
+    ]);
     const displayData = data || placeholderData;
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "container mt-10",
@@ -1038,7 +1136,7 @@ function PageSlug() {
                     className: "w-full h-10"
                 }, void 0, false, {
                     fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-                    lineNumber: 153,
+                    lineNumber: 190,
                     columnNumber: 21
                 }, this) : quesData && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
                     className: "text-4xl",
@@ -1046,17 +1144,17 @@ function PageSlug() {
                         children: quesData.title
                     }, void 0, false, {
                         fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-                        lineNumber: 156,
+                        lineNumber: 193,
                         columnNumber: 25
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-                    lineNumber: 155,
+                    lineNumber: 192,
                     columnNumber: 33
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-                lineNumber: 151,
+                lineNumber: 188,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1067,9 +1165,9 @@ function PageSlug() {
                         className: "inline w-20 h-10"
                     }, void 0, false, {
                         fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-                        lineNumber: 164,
+                        lineNumber: 201,
                         columnNumber: 25
-                    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
+                    }, this) : questionUser && quesData && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "rounded-full overflow-clip h-10 w-10",
@@ -1081,46 +1179,72 @@ function PageSlug() {
                                             alt: displayData.author.name
                                         }, void 0, false, {
                                             fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-                                            lineNumber: 169,
+                                            lineNumber: 206,
                                             columnNumber: 37
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$avatar$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AvatarFallback"], {
                                             className: "font-sans",
-                                            children: displayData.author.name?.charAt(0).toUpperCase()
+                                            children: questionUser.name?.charAt(0).toUpperCase()
                                         }, void 0, false, {
                                             fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-                                            lineNumber: 173,
+                                            lineNumber: 210,
                                             columnNumber: 37
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-                                    lineNumber: 168,
+                                    lineNumber: 205,
                                     columnNumber: 33
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-                                lineNumber: 167,
+                                lineNumber: 204,
                                 columnNumber: 29
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                className: "text-md text-gray-300",
-                                children: displayData.author.name
+                                className: "text-md ",
+                                children: questionUser.name
                             }, void 0, false, {
                                 fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-                                lineNumber: 180,
+                                lineNumber: 218,
                                 columnNumber: 29
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                className: "text-md pl-[150px] ",
+                                children: [
+                                    "Reputation Points : ",
+                                    questionUser.reputation,
+                                    "🪙"
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
+                                lineNumber: 221,
+                                columnNumber: 29
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                children: [
+                                    "Tag : ",
+                                    quesData.tag
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
+                                lineNumber: 224,
+                                columnNumber: 33
                             }, this)
                         ]
-                    }, void 0, true)
+                    }, void 0, true, {
+                        fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
+                        lineNumber: 203,
+                        columnNumber: 55
+                    }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-                    lineNumber: 162,
+                    lineNumber: 199,
                     columnNumber: 17
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-                lineNumber: 161,
+                lineNumber: 198,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1131,17 +1255,17 @@ function PageSlug() {
                         className: "inline w-20 h-10"
                     }, void 0, false, {
                         fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-                        lineNumber: 190,
+                        lineNumber: 234,
                         columnNumber: 25
                     }, this) : quesData && new Date(quesData._creationTime).toLocaleString()
                 }, void 0, false, {
                     fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-                    lineNumber: 188,
+                    lineNumber: 232,
                     columnNumber: 17
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-                lineNumber: 187,
+                lineNumber: 231,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1150,19 +1274,19 @@ function PageSlug() {
                     className: "w-auto h-36"
                 }, void 0, false, {
                     fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-                    lineNumber: 198,
+                    lineNumber: 244,
                     columnNumber: 21
                 }, this) : quesData && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                     className: "text-lg",
                     children: quesData.question_detail
                 }, void 0, false, {
                     fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-                    lineNumber: 200,
+                    lineNumber: 246,
                     columnNumber: 34
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-                lineNumber: 196,
+                lineNumber: 242,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1180,19 +1304,19 @@ function PageSlug() {
                                             className: "w-4 h-4 mr-2"
                                         }, void 0, false, {
                                             fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-                                            lineNumber: 208,
+                                            lineNumber: 254,
                                             columnNumber: 29
                                         }, this),
                                         "Answer Question"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-                                    lineNumber: 207,
+                                    lineNumber: 253,
                                     columnNumber: 25
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-                                lineNumber: 206,
+                                lineNumber: 252,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DialogContent"], {
@@ -1204,20 +1328,20 @@ function PageSlug() {
                                                 children: "Answer"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-                                                lineNumber: 214,
+                                                lineNumber: 260,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DialogDescription"], {
                                                 children: "Be nice!"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-                                                lineNumber: 215,
+                                                lineNumber: 261,
                                                 columnNumber: 29
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-                                        lineNumber: 213,
+                                        lineNumber: 259,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$form$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Form"], {
@@ -1235,7 +1359,7 @@ function PageSlug() {
                                                                     children: "Content"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-                                                                    lineNumber: 227,
+                                                                    lineNumber: 273,
                                                                     columnNumber: 45
                                                                 }, void 0),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$form$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FormControl"], {
@@ -1244,28 +1368,28 @@ function PageSlug() {
                                                                         ...field
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-                                                                        lineNumber: 229,
+                                                                        lineNumber: 275,
                                                                         columnNumber: 49
                                                                     }, void 0)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-                                                                    lineNumber: 228,
+                                                                    lineNumber: 274,
                                                                     columnNumber: 45
                                                                 }, void 0),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$form$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FormMessage"], {}, void 0, false, {
                                                                     fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-                                                                    lineNumber: 234,
+                                                                    lineNumber: 280,
                                                                     columnNumber: 45
                                                                 }, void 0)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-                                                            lineNumber: 226,
+                                                            lineNumber: 272,
                                                             columnNumber: 41
                                                         }, void 0)
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-                                                    lineNumber: 222,
+                                                    lineNumber: 268,
                                                     columnNumber: 33
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DialogFooter"], {
@@ -1278,82 +1402,88 @@ function PageSlug() {
                                                                 className: "mr-2 h-4 w-4 animate-spin"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-                                                                lineNumber: 245,
+                                                                lineNumber: 291,
                                                                 columnNumber: 45
                                                             }, this),
                                                             submitting ? "Answering..." : "Answer"
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-                                                        lineNumber: 239,
+                                                        lineNumber: 285,
                                                         columnNumber: 37
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-                                                    lineNumber: 238,
+                                                    lineNumber: 284,
                                                     columnNumber: 33
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-                                            lineNumber: 218,
+                                            lineNumber: 264,
                                             columnNumber: 29
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-                                        lineNumber: 217,
+                                        lineNumber: 263,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-                                lineNumber: 212,
+                                lineNumber: 258,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-                        lineNumber: 205,
+                        lineNumber: 251,
                         columnNumber: 17
                     }, this),
                     ansData && ansData.length > 0 ? ansData.map((a, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$comment$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Comment"], {
-                            props: a
+                            handleNew: handleNew,
+                            props: a,
+                            dataRef: dataRef,
+                            setDataRef: setDataRef,
+                            dataRef2: dataRef2,
+                            setDataRef2: setDataRef2
                         }, index, false, {
                             fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-                            lineNumber: 259,
+                            lineNumber: 305,
                             columnNumber: 25
                         }, this)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardHeader"], {
                             children: "No Answers Yet, Be the first!!!!!"
                         }, void 0, false, {
                             fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-                            lineNumber: 263,
+                            lineNumber: 310,
                             columnNumber: 25
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-                        lineNumber: 262,
+                        lineNumber: 309,
                         columnNumber: 21
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-                lineNumber: 204,
+                lineNumber: 250,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/(dashboard)/questions/[slug]/page.jsx",
-        lineNumber: 150,
+        lineNumber: 187,
         columnNumber: 9
     }, this);
 }
-_s(PageSlug, "FeLH+BqpSiVDD4ObsUx2GZFDki8=", false, function() {
+_s(PageSlug, "wWZd2rkxv3ccOA2gMzw3HZGfWvY=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useParams"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$swr$2f$dist$2f$index$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["default"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hook$2d$form$2f$dist$2f$index$2e$esm$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useForm"],
+        __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useApiMutation$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useApiMutation"],
         __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useApiMutation$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useApiMutation"],
         __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useApiMutation$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useApiMutation"],
         __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useApiMutation$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useApiMutation"]

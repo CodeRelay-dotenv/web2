@@ -19,6 +19,8 @@ import {
     FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Select } from "@/components/ui/select";
+
 import { Skeleton } from "@/components/ui/skeleton";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
@@ -32,6 +34,7 @@ import { useDebounce } from "use-debounce";
 import * as z from "zod";
 import { useApiMutation } from "@/hooks/useApiMutation";
 import { api } from "@/convex/_generated/api";
+import { useQuery } from "convex/react";
 
 
 
@@ -57,6 +60,9 @@ const formSchema = z.object({
         .max(500, {
             message: "Content must be less than 500 characters.",
         }),
+        tag: z
+        .string()
+        
 });
 
 export default function Question() {
@@ -73,12 +79,13 @@ export default function Question() {
     const [connect,setIsConnect] = useState(true);
 
     const {mutate:createQuestion,isLoading2} = useApiMutation(api.qna.createQuestion);
+    const {mutate:searchQuestion,isLoading23} = useApiMutation(api.qna.searchQuestions);
 
 
 
     useEffect(() => {
         if (!submitting) {
-            form.reset({ title: "", content: "" });
+            form.reset({ title: "", content: "" , tag:""});
             setIsOpen(false);
         }
     }, [submitting, form]);
@@ -86,7 +93,7 @@ export default function Question() {
         setSubmitting(true);
         createQuestion({title:values.title,
             question_detail:values.content,
-            tag:"admin"
+            tag:values.tag
           })
               .then((question)=>{
                 console.log("Bangya Question 2",question)
@@ -101,17 +108,17 @@ export default function Question() {
             });
     }
 
+    
+
+
     const getKey = (pageIndex, previousPageData) => {
         if (previousPageData && !previousPageData.length) return null;
 
         const search= [];
-        if (searchDebounce) search.push(`title=${searchDebounce}`);
-
-        if (pageIndex === 0)
-            return `/api/questions/get${search && `?${search.join("&")}`}`;
-        return `/api/questions/get?cursor=${
-            previousPageData[previousPageData.length - 1].id
-        }${search && `&${search.join("&")}`}`;
+        if (searchDebounce){
+             
+        }
+       
     };
 
     const {mutate:createQ,isLoading} = useApiMutation(api.qna.getAllQuestion);
@@ -202,6 +209,24 @@ export default function Question() {
                                             </FormItem>
                                         )}
                                     />
+                                        <FormField
+                                            control={form.control}
+                                            name="tag"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                <FormLabel>Tag</FormLabel>
+                                                <FormControl>
+                                                    <Select {...field}>
+                                                    <option value="">Select a tag</option>
+                                                    <option value="study">Study</option>
+                                                    <option value="admin">Admin</option>
+                                                    <option value="help">Help</option>
+                                                    </Select>
+                                                </FormControl>
+                                                <FormMessage />
+                                                </FormItem>
+                                            )}
+                                            />
                                     <DialogFooter>
                                         <Button
                                             type="submit"
@@ -238,6 +263,7 @@ export default function Question() {
                                     content={page.question_detail}
                                     id={page._id}
                                     key={`${page._id}`}
+                                    tag={page.tag}
                                 ></QuestionCard>
                             )
                         }

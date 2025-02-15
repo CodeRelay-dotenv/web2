@@ -26,6 +26,8 @@ export function QuestionCard(props) {
                         <CardTitle>
                             {props.title}
                             <ChevronRightIcon className="ml-auto h-6 w-6" />
+                            Tag - {props.tag}
+                            <div className="ml-auto h-6 w-6" />
                         </CardTitle>
                         <CardDescription>{props.content}</CardDescription>
                     </CardHeader>

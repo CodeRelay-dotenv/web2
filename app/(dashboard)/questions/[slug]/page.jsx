@@ -72,6 +72,9 @@ export default function PageSlug() {
     const [ansData,setAnsData] = useState(null)
     const [handleNew,setHandleNew] = useState(false);
     const [first,setFirst] = useState(true)
+    const [questionUser,setQuestionUser] = useState(null);
+    const [dataRef,setDataRef] = useState(false)
+    const [dataRef2,setDataRef2] = useState(false)
 
 
 
@@ -79,8 +82,23 @@ export default function PageSlug() {
     const {mutate:createAnswer,isLoading3} = useApiMutation(api.qna.createAnswer);
     const {mutate:getAllAnswer,isLoading4} = useApiMutation(api.qna.getAllAnswer);
 
+    const {mutate:getUser,isLoading5} = useApiMutation(api.qna.searchUser);
+
 
     useEffect(()=>{
+         
+        getUser({question_id:slug})
+              .then((question)=>{
+                setQuestionUser(question)
+                console.log("User Data----",question)
+              })
+              .catch(()=>{
+                console.log("Error in question creation")
+                
+              })
+
+
+
         getQuestion({id: slug})
               .then((question)=>{
                 setQuesData(question);
@@ -94,7 +112,14 @@ export default function PageSlug() {
               .finally(()=>{
                 setFirst(false);
               })
+       
+
+
+        
     },[first])
+
+
+    
     useEffect(()=>{
         getAllAnswer({question_id:slug})
         .then((question)=>{
@@ -144,6 +169,18 @@ export default function PageSlug() {
         answers: [],
     };
 
+    useEffect(()=>{
+        setFirst(true);
+    },[dataRef])
+
+
+    useEffect(()=>{
+        console.log("ojajodjawdk")
+        setHandleNew((prev)=>!prev)
+    },[dataRef2])
+    
+
+
     const displayData = data || placeholderData;
 
     return (
@@ -163,7 +200,7 @@ export default function PageSlug() {
                     {isLoading ? (
                         <Skeleton className="inline w-20 h-10" />
                     ) : (
-                        <>
+                        questionUser && quesData &&   <div>
                             <div className="rounded-full overflow-clip h-10 w-10">
                                 <Avatar className="h-10 w-10 rounded-full overflow-clip">
                                     <AvatarImage
@@ -171,16 +208,23 @@ export default function PageSlug() {
                                         alt={displayData.author.name}
                                     />
                                     <AvatarFallback className="font-sans">
-                                        {displayData.author.name
-                                            ?.charAt(0)
-                                            .toUpperCase()}
+                                    {questionUser.name
+                                                ?.charAt(0)
+                                                .toUpperCase()}
+                                    
                                     </AvatarFallback>
                                 </Avatar>
                             </div>
-                            <span className="text-md text-gray-300">
-                                {displayData.author.name}
+                            <span className="text-md ">
+                                {questionUser.name}
                             </span>
-                        </>
+                            <span className="text-md pl-[150px] ">
+                                Reputation Points : {questionUser.reputation}🪙
+                            </span>
+                                <div >
+                                  Tag : {quesData.tag}
+                                </div>
+                            </div>
                     )}
                 </div>
             </div>
@@ -189,7 +233,9 @@ export default function PageSlug() {
                     {isLoading ? (
                         <Skeleton className="inline w-20 h-10" />
                     ) : (
-                        quesData &&  new Date(quesData._creationTime).toLocaleString()
+                        quesData && ( new Date(quesData._creationTime).toLocaleString()
+                        
+                        )
                     )}
                 </span>
             </div>
@@ -256,7 +302,8 @@ export default function PageSlug() {
 
                 {ansData && ansData.length > 0 ? (
                     ansData.map((a, index) => (
-                        <Comment props={a} key={index} />
+                        <Comment handleNew={handleNew} props={a} key={index} dataRef={dataRef} setDataRef={setDataRef}
+                        dataRef2={dataRef2} setDataRef2={setDataRef2} />
                     ))
                 ) : (
                     <Card>
