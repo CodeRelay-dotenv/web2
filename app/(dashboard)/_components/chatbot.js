@@ -18,7 +18,7 @@ const Chatbot = () => {
         language-code="en"
         max-query-length="-1"
       >
-        <df-messenger-chat-bubble chat-title="CodeRelay_3.0"></df-messenger-chat-bubble>
+        <df-messenger-chat-bubble chat-title="EduFlow Nexus"></df-messenger-chat-bubble>
         <df-messenger-expand-button></df-messenger-expand-button>
       </df-messenger>
       

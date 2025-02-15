@@ -9,7 +9,7 @@ import {Loading} from "@/components/auth/loading";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Canvasly",
+  title: "EduFlow Nexus",
   description: "Digital collaboration whiteboard",
 };
 
