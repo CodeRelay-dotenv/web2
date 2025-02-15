@@ -17,7 +17,7 @@ const font = Poppins({
 export function OtherSidebar() {
   const searchParams = useSearchParams();
 
-  const favourites = searchParams.get("favourites");
+  const leaderboard = searchParams.get("leaderboard");
 
   return (
     <div className="hidden lg:flex flex-col space-y-6 w-[206px] pl-5 pt-5">
@@ -27,18 +27,33 @@ export function OtherSidebar() {
           <span className={cn("font-semibold text-2xl", font.className)}>
             Canvasly
           </span>
-        </div>
+        </div>  
       </Link>
 
       <div className="space-y-1 w-full">
         <Button
-          variant={favourites ? "ghost" : "secondary"}
+          variant={leaderboard ? "ghost" : "secondary"}
           asChild
           size="lg"
           className="font-normal justify-start px-2 w-full"
         >
           <Link href="/">
             Questions
+          </Link>
+        </Button>
+        <Button
+          variant={leaderboard ? "secondary" : "ghost"}
+          asChild
+          size="lg"
+          className="font-normal justify-start px-2 w-full"
+        >
+          <Link href={{
+              pathname: "/",
+              query: {
+                leaderboard: "true",
+              },
+            }}>
+            Leaderboard
           </Link>
         </Button>
       </div>

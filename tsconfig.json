@@ -22,6 +22,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "next.config.mjs", "convex/qna.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "next.config.mjs", "convex/qna.js", "app/(dashboard)/_components/questionHome.jsx", "components/question-card.jsx", "app/(dashboard)/questions/[slug]/page.jsx", "components/comment.jsx", "components/ui/avatar copy.jsx"],
   "exclude": ["node_modules"]
 }

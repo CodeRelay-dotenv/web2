@@ -22,6 +22,48 @@ export const createUser = mutation({
           reputation:0,
           like:0,
           user_id: identity.subject,
+          category:[{
+            name:"ML",
+            question_id:[]
+          },
+          {
+            name:"Web Development",
+            question_id:[]
+          },
+          {
+            name:"Artificial Intelligence",
+            question_id:[]
+          },
+          {
+            name:"Data Science",
+            question_id:[]
+          },
+          {
+            name:"Cybersecurity",
+            question_id:[]
+          },
+          {
+            name:"Cloud Computing",
+            question_id:[]
+          },
+          {
+            name:"DevOps",
+            question_id:[]
+          },
+          {
+            name:"Mobile App Development",
+            question_id:[]
+          },
+          {
+            name:"Blockchain",
+            question_id:[]
+          },
+          {
+            name:"Game Development",
+            question_id:[]
+          },
+
+        ]
       });
       if(user_new){
         return user_new;
@@ -34,13 +76,96 @@ export const createUser = mutation({
   },
 });
 
+export const searchUser = mutation({
+  args: { question_id: v.id("questions") },
+  handler: async (ctx, args) => {
+    // Ensure the caller is authenticated.
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) {
+      throw new Error("Unauthorized");
+    }
+
+    // Retrieve the answer document using the provided question ID.
+    const answer = await ctx.db.get(args.question_id);
+    if (!answer) {
+      throw new Error("Answer not found");
+    }
+
+    // Instead of calling db.get on answer.user_id (which expects a valid Convex ID),
+    // we query the "users" collection for a document where the "user_id" field matches.
+    const user = await ctx.db
+      .query("user", (q) => q.eq("user_id", answer.user_id))
+      .first();
+
+    if (!user) {
+      throw new Error("User not found");
+    }
+
+    return user;
+  },
+});
+export const getUsersByCategory = mutation({
+  args: { category: v.string() },
+  handler: async (ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) throw new Error("Unauthorized");
+
+    const allUsers = await ctx.db.query("user").collect();
+    
+    const filteredUsers = allUsers.filter(user => 
+      user.category.some(cat => 
+        cat.name === args.category && 
+        cat.question_id.length > 0
+      )
+    );
+
+    
+    console.log("hhehehe",args.category)
+    console.log("adwadawdawddxax",filteredUsers)
+    return filteredUsers;
+  },
+});
+
+
+export const searchUserAnswer = mutation({
+  args: { answer_id: v.id("answer") },
+  handler: async (ctx, args) => {
+    // Ensure the caller is authenticated.
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) {
+      throw new Error("Unauthorized");
+    }
+
+    // Retrieve the answer document using the provided question ID.
+    const answer = await ctx.db.get(args.answer_id);
+    if (!answer) {
+      throw new Error("Answer not found");
+    }
+
+    // Instead of calling db.get on answer.user_id (which expects a valid Convex ID),
+    // we query the "users" collection for a document where the "user_id" field matches.
+    const user = await ctx.db
+       .query("user").filter((q) => q.eq(q.field("user_id"), answer.user_id))
+       .first();
+
+    if (!user) {
+      throw new Error("User not found");
+    }
+
+    return user;
+  },
+});
+
+
+
 
 
 export const createQuestion = mutation({
   args: {
     title:v.string(),
     question_detail:v.string(),
-    tag:v.string()
+    tag:v.string(),
+    category:v.string(),
   },
   handler: async (ctx, args) => {
     const identity = await ctx.auth.getUserIdentity();
@@ -53,6 +178,7 @@ export const createQuestion = mutation({
       user_id: identity.subject,
       question_detail:args.question_detail,
       tag:args.tag,
+      category:args.category,
       answers:[],
     })
 
@@ -62,12 +188,61 @@ export const createQuestion = mutation({
 });
 
 
+
+export const getAllQuestion = mutation({ // Changed from mutation to query
+  args: {},
+  handler: async (ctx) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) throw new Error("Unauthorized");
+
+    const questions = await ctx.db
+      .query("questions")
+      .collect();
+
+    return questions;
+  },
+});
+
+export const getAllAnswer = mutation({
+  args: {
+    question_id:v.id("questions")
+  },
+  handler: async (ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity();
+
+    if (!identity) {
+      throw new Error("Unauthorized");
+    }
+    const getanswer = await ctx.db.get(args.question_id)
+    
+    return getanswer.answers;
+
+  },
+});
+
+
+export const searchQuestions = mutation({
+  // The search text is passed as an argument.
+  args: { searchText: v.string() },
+  handler: async (ctx, args)  => {
+    // Use q.search to filter documents by the "title" field.
+    // Note: Make sure that full-text search is enabled on your collection or use an appropriate filter.
+    const results = await ctx.db
+      .query("questions", (q) => q.search("title", args.searchText))
+      .collect();
+    return results;
+  },
+});
+
+
+
+
 export const updateQuestion = mutation({
   args: {
     title:v.string(),
     question_detail:v.string(),
     tag:v.string(),
-    id:v.id("questions")
+    id:v.id("c")
   },
   handler: async (ctx, args) => {
     const identity = await ctx.auth.getUserIdentity();
@@ -86,6 +261,47 @@ export const updateQuestion = mutation({
 
   },
 });
+
+
+
+
+export const getSpecificQuestion = mutation({
+  args: {
+    id:v.id("questions")
+  },
+  handler: async (ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity();
+
+    if (!identity) {
+      throw new Error("Unauthorized");
+    }
+
+    const getanswer = await ctx.db.get(args.id);
+
+  
+    return getanswer
+  },
+});
+
+
+export const getSpecificAnswer = mutation({
+  args: {
+    id:v.id("answer")
+  },
+  handler: async (ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity();
+
+    if (!identity) {
+      throw new Error("Unauthorized");
+    }
+
+    const getanswer = await ctx.db.get(args.id);
+
+  
+    return getanswer
+  },
+});
+
 
 
 
@@ -129,7 +345,7 @@ export const createAnswer = mutation({
     const identity = await ctx.auth.getUserIdentity();
     if (!identity) throw new Error("Unauthorized");
 
-    const getanswer = await ctx.db.get(args.question_id)
+    const getanswer = await ctx.db.get(args.question_id);
 
     // Create the answer
     const answerId = await ctx.db.insert("answer", {
@@ -138,15 +354,46 @@ export const createAnswer = mutation({
       user_id: identity.subject,
       like: 0,
     });
-    
+
     // Update the question's answers array
     await ctx.db.patch(args.question_id, {
-      answers: [...getanswer.answers,answerId]
+      answers: [...getanswer.answers, answerId],
+    });
+
+    const user = await ctx.db
+      .query("user")
+      .filter((q) => q.eq(q.field("user_id"), identity.subject))
+      .first();
+    const rep = user.reputation;
+
+    const userData = await ctx.db.get(user._id);
+    console.log("user ka data h---",userData)
+    // Find the category that matches getanswer.category
+    const updatedCategory = userData.category.map((cat) => {
+      if (cat.name === getanswer.category) {
+        // Append the question_id to the questions array
+        return {
+          ...cat,
+          question_id: [...cat.question_id, args.question_id],
+        };
+      }
+      return cat;
+    });
+
+    console.log("Updated Category ----",updatedCategory);
+
+    // Update the user's category field
+    await ctx.db.patch(user._id, {
+      category: updatedCategory,
+      reputation: rep + 2,
     });
 
     return answerId;
   },
 });
+
+
+
 
 
 //Answer update controller for answer schema
@@ -175,21 +422,40 @@ export const updateAnswer = mutation({
 export const updateLikeAnswer = mutation({
   args: {
     answer_id: v.id("answer"),
-    like:v.number()
+    
   },
   handler: async (ctx, args) => {
     const identity = await ctx.auth.getUserIdentity();
     if (!identity) throw new Error("Unauthorized");
 
-
+    const data = await ctx.db.get(args.answer_id);
     // Update the answer
+    const likeVal = data.like;
     await ctx.db.patch(args.answer_id, {
-      like:args.like
+      like:(likeVal+1)
+    });
+
+
+    const user = await ctx.db
+      .query("user").filter((q) => q.eq(q.field("user_id"),  data.user_id))
+    .first();
+
+    const rep = user.reputation;
+    await ctx.db.patch(user._id, {
+      reputation:(rep+10)
     });
 
     return {status:200,message:"Successfully updated the like entry"};
   },
 });
+
+
+
+
+
+
+
+
 
 
 //delete answer controller for answer schema
@@ -217,3 +483,7 @@ export const deleteAnswer = mutation({
     return {status:200,message:"Successfully deleted the answer entry"};
   },
 });
+
+
+
+

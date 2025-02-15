@@ -9,6 +9,10 @@ export default defineSchema({
     user_id:v.string(),
     reputation:v.number(),
     like:v.optional(v.number()),
+    category:v.array(v.object({
+      name:v.string(),
+      question_id:v.array(v.id("questions"))
+     }))
   })
   .index("by_user_id",["user_id"]),
   
@@ -17,7 +21,8 @@ export default defineSchema({
     title:v.string(),
     question_detail:v.string(),
     tag:v.union(v.literal('help'),v.literal('admin'),v.literal('study')),
-    answers:v.array(v.id("answer"))
+    answers:v.array(v.id("answer")),
+    category:v.string()
   }),
 
   answer:defineTable({

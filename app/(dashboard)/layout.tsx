@@ -6,6 +6,7 @@ import { OrgSidebar } from "./_components/orgSidebar";
 import { OtherSidebar } from "./_components/otherSidebar";
 import { Sidebar } from "./_components/sidebar";
 import { PageContextProvider } from "./_context/pageContext";
+import Chatbot from "./_components/chatbot"
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -30,6 +31,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         </div>
         </div>
       </div>
+      <Chatbot />
       </main>
     </PageContextProvider>
   );
