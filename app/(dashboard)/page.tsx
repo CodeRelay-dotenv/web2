@@ -24,11 +24,11 @@ export default function DashboardPage() {
   useEffect(() => {
     create({})
       .then((user) => {
-        toast.success("User Bangya");
+        
         console.log("User Bangya", user);
       })
       .catch(() => {
-        toast.error("Error aagya");
+        toast.error("Error In User Creation");
         console.log("Calling me error h");
       });
   }, []);
