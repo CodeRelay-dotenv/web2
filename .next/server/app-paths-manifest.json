@@ -1,6 +1,6 @@
 {
   "/(dashboard)/page": "app/(dashboard)/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/board/[boardId]/page": "app/board/[boardId]/page.js",
-  "/api/liveblocks-auth/route": "app/api/liveblocks-auth/route.js"
+  "/(dashboard)/questions/[slug]/page": "app/(dashboard)/questions/[slug]/page.js"
 }

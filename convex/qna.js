@@ -35,6 +35,29 @@ export const createUser = mutation({
 });
 
 
+export const searchUser = mutation({
+  args: {
+    },
+  handler: async (ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity();
+    
+    if (!identity) {
+      throw new Error("Unauthorized");
+    }
+    const user_identify = await ctx.db.query("user").withIndex("by_user_id", (q) =>
+        q.eq("user_id", identity.subject)
+      )
+      .unique()
+    
+    return user_identify;
+    
+  },
+});
+
+
+
+
+
 
 export const createQuestion = mutation({
   args: {
@@ -63,22 +86,19 @@ export const createQuestion = mutation({
 
 
 
-export const getAllQuestion = mutation({
-  args: {
-  },
-  handler: async (ctx, args) => {
+export const getAllQuestion = mutation({ // Changed from mutation to query
+  args: {},
+  handler: async (ctx) => {
     const identity = await ctx.auth.getUserIdentity();
+    if (!identity) throw new Error("Unauthorized");
 
-    if (!identity) {
-      throw new Error("Unauthorized");
-    }
-    const question_get = await ctx.db.get("questions")
+    const questions = await ctx.db
+      .query("questions")
+      .collect();
 
-    return question_get
-
+    return questions;
   },
 });
-
 
 export const getAllAnswer = mutation({
   args: {
@@ -124,6 +144,43 @@ export const updateQuestion = mutation({
 
 
 
+
+export const getSpecificQuestion = mutation({
+  args: {
+    id:v.id("questions")
+  },
+  handler: async (ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity();
+
+    if (!identity) {
+      throw new Error("Unauthorized");
+    }
+
+    const getanswer = await ctx.db.get(args.id);
+
+  
+    return getanswer
+  },
+});
+
+
+export const getSpecificAnswer = mutation({
+  args: {
+    id:v.id("answer")
+  },
+  handler: async (ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity();
+
+    if (!identity) {
+      throw new Error("Unauthorized");
+    }
+
+    const getanswer = await ctx.db.get(args.id);
+
+  
+    return getanswer
+  },
+});
 
 export const deleteQuestion = mutation({
   args: {
