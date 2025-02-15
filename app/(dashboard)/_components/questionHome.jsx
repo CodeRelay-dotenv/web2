@@ -61,6 +61,8 @@ const formSchema = z.object({
             message: "Content must be less than 500 characters.",
         }),
         tag: z
+        .string(),
+        category: z
         .string()
         
 });
@@ -85,7 +87,7 @@ export default function Question() {
 
     useEffect(() => {
         if (!submitting) {
-            form.reset({ title: "", content: "" , tag:""});
+            form.reset({ title: "", content: "" , tag:"",category:""});
             setIsOpen(false);
         }
     }, [submitting, form]);
@@ -93,7 +95,8 @@ export default function Question() {
         setSubmitting(true);
         createQuestion({title:values.title,
             question_detail:values.content,
-            tag:values.tag
+            tag:values.tag,
+            category:values.category
           })
               .then((question)=>{
                 console.log("Bangya Question 2",question)
@@ -210,6 +213,31 @@ export default function Question() {
                                         )}
                                     />
                                         <FormField
+                                            control={form.control}
+                                            name="category"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                <FormLabel>Category</FormLabel>
+                                                <FormControl>
+                                                    <Select {...field}>
+                                                    <option value="">Select a tag</option>
+                                                    <option value="ML">ML</option>
+                                                    <option value="Web Development">Web Development</option>
+                                                    <option value="Artificial Intelligence">Artificial Intelligence (AI)</option>
+                                                    <option value="Data Science">Data Science</option>
+                                                    <option value="Cybersecurity">Cybersecurity</option>
+                                                    <option value="Cloud Computing">Cloud Computing</option>
+                                                    <option value="DevOps">DevOps</option>
+                                                    <option value="Mobile App Development">Mobile App Development</option>
+                                                    <option value="Blockchain">Blockchain</option>
+                                                    <option value="Game Development">Game Development</option>
+                                                    </Select>
+                                                </FormControl>
+                                                <FormMessage />
+                                                </FormItem>
+                                            )}
+                                            />
+                                            <FormField
                                             control={form.control}
                                             name="tag"
                                             render={({ field }) => (
