@@ -168,6 +168,7 @@ export const SelectionTools = memo(
 
     const onSearch = () => {
       setMagic("fetching");
+      setQuery((prev) => prev.trim());
       if(query.length > 0) {
         fetch(`${ngrokUrl}/generate-content`, {
           method: "POST",
@@ -248,7 +249,7 @@ export const SelectionTools = memo(
               )`,
             }}
           > Anything else you want to add to this search query?
-            <textarea value={query} onChange={(e) => setQuery(e.target.value.trim())} maxLength={250} className="w-full h-28 border border-gray-300 rounded-md p-2" />
+            <textarea value={query} onChange={(e) => setQuery(e.target.value)} maxLength={250} className="w-full h-28 border border-gray-300 rounded-md p-2" />
             <button onClick={onSearch} className="w-[20%] h-8 bg-blue-500 text-white rounded-md">Search</button>
           </div>)
         }
