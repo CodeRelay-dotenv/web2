@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { api } from "@/convex/_generated/api";
 import { useApiMutation } from "@/hooks/useApiMutation";
 import { toast } from "sonner";
+import QuestionHome from "./_components/questionHome"
 
 export default function DashboardPage() {
   const { organization } = useOrganization();
@@ -29,7 +30,7 @@ export default function DashboardPage() {
 
   return (
     <div className="flex-1 h-[calc(100%-80px)] p-6">
-      {selected === "home" ? <h1>Home</h1> : 
+      {selected === "home" ? <QuestionHome /> : 
         !organization ? (
           <EmptyOrg />
         ) : (

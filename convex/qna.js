@@ -62,12 +62,47 @@ export const createQuestion = mutation({
 });
 
 
+
+export const getAllQuestion = mutation({
+  args: {
+  },
+  handler: async (ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity();
+
+    if (!identity) {
+      throw new Error("Unauthorized");
+    }
+    const question_get = await ctx.db.get("questions")
+
+    return question_get
+
+  },
+});
+
+
+export const getAllAnswer = mutation({
+  args: {
+    question_id:v.id("questions")
+  },
+  handler: async (ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity();
+
+    if (!identity) {
+      throw new Error("Unauthorized");
+    }
+    const getanswer = await ctx.db.get(args.question_id)
+
+    return getanswer.answers;
+
+  },
+});
+
 export const updateQuestion = mutation({
   args: {
     title:v.string(),
     question_detail:v.string(),
     tag:v.string(),
-    id:v.id("questions")
+    id:v.id("c")
   },
   handler: async (ctx, args) => {
     const identity = await ctx.auth.getUserIdentity();

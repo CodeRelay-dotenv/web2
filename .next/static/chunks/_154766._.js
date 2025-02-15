@@ -114,7 +114,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$convex$2f$di
 ;
 ;
 ;
-const convexUrl = ("TURBOPACK compile-time value", "https://wary-wildebeest-948.convex.cloud");
+const convexUrl = ("TURBOPACK compile-time value", "https://scintillating-cat-66.convex.cloud");
 const convex = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$convex$2f$dist$2f$esm$2f$react$2f$client$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ConvexReactClient"](convexUrl);
 const publishableKey = ("TURBOPACK compile-time value", "pk_test_aGVscGluZy13YWxsYWJ5LTY3LmNsZXJrLmFjY291bnRzLmRldiQ");
 const ConvexClientProvider = ({ children })=>{
