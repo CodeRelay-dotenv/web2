@@ -30,7 +30,7 @@ export const SelectionTools = memo(
     const [imgUrl, setImgUrl] = useState(null);
     const [query, setQuery] = useState("");
     const [resultMark, setResultMark] = useState(``);
-    const ngrokUrl = "https://82bd-14-139-195-220.ngrok-free.app";
+    const ngrokUrl = "https://ai-backend-1088440979862.asia-south1.run.app";
 
     const deleteLayers = useDeleteLayers();
     const selectionBounds = useSelectionBounds();
