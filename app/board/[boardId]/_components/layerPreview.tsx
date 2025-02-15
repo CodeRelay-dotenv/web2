@@ -9,6 +9,7 @@ import { Text } from "./text";
 import { Note } from "./note";
 import { Path } from "./path";
 import { colorToCss } from "@/lib/utils";
+import { AISuggestion } from "./AISuggestion";
 
 interface LayerPreviewProps {
   id: string;
@@ -64,6 +65,15 @@ export const LayerPreview = memo(
       case LayerType.Rectangle:
         return (
           <Rectangle
+            id={id}
+            layer={layer}
+            onPointerDown={onLayerPointerDown}
+            selectionColor={selectionColor}
+          />
+        );
+      case LayerType.AISuggestion:
+        return (
+          <AISuggestion
             id={id}
             layer={layer}
             onPointerDown={onLayerPointerDown}

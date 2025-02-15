@@ -45,6 +45,7 @@ var LayerType = /*#__PURE__*/ function(LayerType) {
     LayerType[LayerType["Rectangle"] = 2] = "Rectangle";
     LayerType[LayerType["Ellipse"] = 3] = "Ellipse";
     LayerType[LayerType["Path"] = 4] = "Path";
+    LayerType[LayerType["AISuggestion"] = 5] = "AISuggestion";
     return LayerType;
 }({});
 var Side = /*#__PURE__*/ function(Side) {
@@ -2147,6 +2148,17 @@ const LayerPreview = /*#__PURE__*/ _s((0, __TURBOPACK__imported__module__$5b$pro
                 lineNumber: 66,
                 columnNumber: 11
             }, this);
+        case __TURBOPACK__imported__module__$5b$project$5d2f$types$2f$canvas$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["LayerType"].AISuggestion:
+            return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(AISuggestio, {
+                id: id,
+                layer: layer,
+                onPointerDown: onLayerPointerDown,
+                selectionColor: selectionColor
+            }, void 0, false, {
+                fileName: "[project]/app/board/[boardId]/_components/layerPreview.tsx",
+                lineNumber: 75,
+                columnNumber: 11
+            }, this);
         default:
             console.warn("Unknown layer type", layer);
             return null;
@@ -2914,11 +2926,14 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$hint$2e$tsx__$
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/components/ui/button.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useDeleteLayers$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/hooks/useDeleteLayers.ts [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useSelectionBounds$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/hooks/useSelectionBounds.ts [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$types$2f$canvas$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/types/canvas.ts [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$board$2f5b$boardId$5d2f$_components$2f$colorPicker$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/app/board/[boardId]/_components/colorPicker.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$html2canvas$2f$dist$2f$html2canvas$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/html2canvas/dist/html2canvas.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$liveblocks$2f$react$2f$dist$2f$chunk$2d$63WTJCBG$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__$5f$useSelfSuspense__as__useSelf$3e$__ = __turbopack_import__("[project]/node_modules/@liveblocks/react/dist/chunk-63WTJCBG.mjs [app-client] (ecmascript) <export _useSelfSuspense as useSelf>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$liveblocks$2f$react$2f$dist$2f$chunk$2d$63WTJCBG$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__$5f$useMutation__as__useMutation$3e$__ = __turbopack_import__("[project]/node_modules/@liveblocks/react/dist/chunk-63WTJCBG.mjs [app-client] (ecmascript) <export _useMutation as useMutation>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$nanoid$2f$index$2e$browser$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_import__("[project]/node_modules/nanoid/index.browser.js [app-client] (ecmascript) <locals>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$liveblocks$2f$core$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/@liveblocks/core/dist/index.mjs [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$bring$2d$to$2d$front$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__BringToFront$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/bring-to-front.js [app-client] (ecmascript) <export default as BringToFront>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$send$2d$to$2d$back$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__SendToBack$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/send-to-back.js [app-client] (ecmascript) <export default as SendToBack>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trash$2d$2$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Trash2$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/trash-2.js [app-client] (ecmascript) <export default as Trash2>");
@@ -2935,11 +2950,21 @@ var _s = __turbopack_refresh__.signature();
 ;
 ;
 ;
-const SelectionTools = /*#__PURE__*/ _s((0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["memo"])(_c = _s(({ camera, setLastUsedColor })=>{
+;
+;
+;
+;
+const SelectionTools = /*#__PURE__*/ _s((0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["memo"])(_c = _s(({ camera, setLastUsedColor, setCanvasState, lastUsedColor })=>{
     _s();
+    const MAX_LAYERS = 5000;
     const selection = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$liveblocks$2f$react$2f$dist$2f$chunk$2d$63WTJCBG$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__$5f$useSelfSuspense__as__useSelf$3e$__["useSelf"])({
         "SelectionTools.useSelf[selection]": (self)=>self.presence.selection
     }["SelectionTools.useSelf[selection]"]);
+    const [curMagic, setMagic] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("idle");
+    const [imgUrl, setImgUrl] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [query, setQuery] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
+    const [resultMark, setResultMark] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("he he boy");
+    const ngrokUrl = "https://7037-14-139-195-220.ngrok-free.app";
     const deleteLayers = (0, __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useDeleteLayers$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useDeleteLayers"])();
     const selectionBounds = (0, __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useSelectionBounds$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSelectionBounds"])();
     const handleMoveToBack = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$liveblocks$2f$react$2f$dist$2f$chunk$2d$63WTJCBG$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__$5f$useMutation__as__useMutation$3e$__["useMutation"])({
@@ -2976,6 +3001,39 @@ const SelectionTools = /*#__PURE__*/ _s((0, __TURBOPACK__imported__module__$5b$p
     }["SelectionTools.useMutation[handleMoveToFront]"], [
         selection
     ]);
+    const insertAILayer = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$liveblocks$2f$react$2f$dist$2f$chunk$2d$63WTJCBG$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__$5f$useMutation__as__useMutation$3e$__["useMutation"])({
+        "SelectionTools.useMutation[insertAILayer]": ({ storage, setMyPresence }, layerType, position)=>{
+            const liveLayers = storage.get("layers");
+            if (liveLayers.size >= MAX_LAYERS) {
+                return; //TODO: show error message
+            }
+            const liveLayerIds = storage.get("layerIds");
+            const layerId = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$nanoid$2f$index$2e$browser$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["nanoid"])();
+            const layer = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$liveblocks$2f$core$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["LiveObject"]({
+                type: layerType,
+                x: position.x,
+                y: position.y,
+                width: 600,
+                height: 800,
+                fill: lastUsedColor,
+                value: resultMark
+            });
+            liveLayerIds.push(layerId);
+            liveLayers.set(layerId, layer);
+            setMyPresence({
+                selection: [
+                    layerId
+                ]
+            }, {
+                addToHistory: true
+            });
+            setCanvasState({
+                mode: __TURBOPACK__imported__module__$5b$project$5d2f$types$2f$canvas$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CanvasMode"].None
+            });
+        }
+    }["SelectionTools.useMutation[insertAILayer]"], [
+        lastUsedColor
+    ]);
     const handleColorChange = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$liveblocks$2f$react$2f$dist$2f$chunk$2d$63WTJCBG$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__$5f$useMutation__as__useMutation$3e$__["useMutation"])({
         "SelectionTools.useMutation[handleColorChange]": ({ storage }, fill)=>{
             const liveLayers = storage.get("layers");
@@ -2994,6 +3052,7 @@ const SelectionTools = /*#__PURE__*/ _s((0, __TURBOPACK__imported__module__$5b$p
     const handleMagicSearch = ()=>{
         const magicSearch = document.getElementById("canvas");
         if (magicSearch) {
+            setMagic("started");
             (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$html2canvas$2f$dist$2f$html2canvas$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])(magicSearch, {
                 x: selectionBounds.x - camera.x,
                 y: selectionBounds.y - camera.y,
@@ -3011,15 +3070,61 @@ const SelectionTools = /*#__PURE__*/ _s((0, __TURBOPACK__imported__module__$5b$p
                         tags: "canvas-upload"
                     })
                 }).then((response)=>response.json()).then((data)=>{
-                    console.log("Response from uploader API:", data); // Log the response
+                    setImgUrl(data.fileUrl);
+                    console.log("Response from uploader API:", data.fileUrl); // Log the response
                 }).catch((error)=>{
                     console.error("Error uploading image:", error);
                 });
             });
         }
     };
-    const x = selectionBounds.width / 2 + selectionBounds.x - camera.x;
+    const onSearch = ()=>{
+        setMagic("fetching");
+        // if(query.length > 0) {
+        //   fetch(`${ngrokUrl}/generate-content`, {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //     },
+        //     body: JSON.stringify({
+        //         image_url: imgUrl,
+        //         query: query,
+        //     }),
+        //   }).then((response) => response.json())
+        //   .then((data) => {
+        //       console.log("Response from content generator API:", data.notes); // Log the response
+        //       setResultMark(data.notes? data.notes : "Something went wrong. Please try again.");
+        //       setMagic("final");
+        //       insertAILayer(LayerType.AISuggestion, { x: selectionBounds.width + 20 + selectionBounds.x, y: selectionBounds.y + selectionBounds.height });
+        //   })
+        // }
+        // else{
+        //   fetch(`${ngrokUrl}/extract-text`, {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //     },
+        //     body: JSON.stringify({
+        //         image_url: imgUrl,
+        //     }),
+        //   }).then((response) => response.json())
+        //   .then((data) => {
+        //       console.log("Response from text extractor API:", data.notes); // Log the response
+        //       setResultMark(data.notes);
+        //       setMagic("final");
+        //       insertAILayer(LayerType.AISuggestion, { x: selectionBounds.width + 20 + selectionBounds.x, y: selectionBounds.y + selectionBounds.height });
+        //   })
+        // }
+        insertAILayer(__TURBOPACK__imported__module__$5b$project$5d2f$types$2f$canvas$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["LayerType"].AISuggestion, {
+            x: selectionBounds.width + 20 + selectionBounds.x,
+            y: selectionBounds.y + selectionBounds.height
+        });
+        setMagic("final");
+    };
+    const x = selectionBounds.width / 2 + selectionBounds.x + camera.x;
     const y = selectionBounds.y + camera.y;
+    const x2 = selectionBounds.width + 20;
+    const y2 = selectionBounds.height;
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "absolute p-3 rounded-xl bg-white shadow-sm border flex select-none",
         style: {
@@ -3029,11 +3134,66 @@ const SelectionTools = /*#__PURE__*/ _s((0, __TURBOPACK__imported__module__$5b$p
           )`
         },
         children: [
+            curMagic === "started" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "absolute top-0 left-0 p-3 rounded-xl bg-white shadow-sm border flex flex-col select-none  w-[450px] h-[200px] gap-4",
+                style: {
+                    transform: `translate(
+                calc(${x2 - 90}px),
+                calc(${y2 - 150}px)
+              )`
+                },
+                children: [
+                    " Anything else you want to add to this search query?",
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
+                        value: query,
+                        onChange: (e)=>setQuery(e.target.value.trim()),
+                        maxLength: 250,
+                        className: "w-full h-28 border border-gray-300 rounded-md p-2"
+                    }, void 0, false, {
+                        fileName: "[project]/app/board/[boardId]/_components/selectionTools.tsx",
+                        lineNumber: 236,
+                        columnNumber: 13
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                        onClick: onSearch,
+                        className: "w-[20%] h-8 bg-blue-500 text-white rounded-md",
+                        children: "Search"
+                    }, void 0, false, {
+                        fileName: "[project]/app/board/[boardId]/_components/selectionTools.tsx",
+                        lineNumber: 237,
+                        columnNumber: 13
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/app/board/[boardId]/_components/selectionTools.tsx",
+                lineNumber: 226,
+                columnNumber: 11
+            }, this),
+            curMagic === "fetching" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "absolute top-0 left-0 p-3 rounded-xl bg-white shadow-sm border flex flex-col select-none  w-[600px] h-[200px] gap-4 animate-pulse",
+                style: {
+                    transform: `translate(
+                  calc(${x2 - 90}px),
+                  calc(${y2 - 150}px)
+                )`
+                },
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                    children: "Fetching data..."
+                }, void 0, false, {
+                    fileName: "[project]/app/board/[boardId]/_components/selectionTools.tsx",
+                    lineNumber: 252,
+                    columnNumber: 15
+                }, this)
+            }, void 0, false, {
+                fileName: "[project]/app/board/[boardId]/_components/selectionTools.tsx",
+                lineNumber: 242,
+                columnNumber: 13
+            }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$board$2f5b$boardId$5d2f$_components$2f$colorPicker$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ColorPicker"], {
                 onChange: handleColorChange
             }, void 0, false, {
                 fileName: "[project]/app/board/[boardId]/_components/selectionTools.tsx",
-                lineNumber: 130,
+                lineNumber: 272,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3047,17 +3207,17 @@ const SelectionTools = /*#__PURE__*/ _s((0, __TURBOPACK__imported__module__$5b$p
                             onClick: handleMoveToFront,
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$bring$2d$to$2d$front$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__BringToFront$3e$__["BringToFront"], {}, void 0, false, {
                                 fileName: "[project]/app/board/[boardId]/_components/selectionTools.tsx",
-                                lineNumber: 134,
+                                lineNumber: 276,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/board/[boardId]/_components/selectionTools.tsx",
-                            lineNumber: 133,
+                            lineNumber: 275,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/board/[boardId]/_components/selectionTools.tsx",
-                        lineNumber: 132,
+                        lineNumber: 274,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$hint$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Hint"], {
@@ -3069,23 +3229,23 @@ const SelectionTools = /*#__PURE__*/ _s((0, __TURBOPACK__imported__module__$5b$p
                             onClick: handleMoveToBack,
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$send$2d$to$2d$back$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__SendToBack$3e$__["SendToBack"], {}, void 0, false, {
                                 fileName: "[project]/app/board/[boardId]/_components/selectionTools.tsx",
-                                lineNumber: 139,
+                                lineNumber: 281,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/board/[boardId]/_components/selectionTools.tsx",
-                            lineNumber: 138,
+                            lineNumber: 280,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/board/[boardId]/_components/selectionTools.tsx",
-                        lineNumber: 137,
+                        lineNumber: 279,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/board/[boardId]/_components/selectionTools.tsx",
-                lineNumber: 131,
+                lineNumber: 273,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3099,17 +3259,17 @@ const SelectionTools = /*#__PURE__*/ _s((0, __TURBOPACK__imported__module__$5b$p
                             onClick: deleteLayers,
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trash$2d$2$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Trash2$3e$__["Trash2"], {}, void 0, false, {
                                 fileName: "[project]/app/board/[boardId]/_components/selectionTools.tsx",
-                                lineNumber: 146,
+                                lineNumber: 288,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/board/[boardId]/_components/selectionTools.tsx",
-                            lineNumber: 145,
+                            lineNumber: 287,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/board/[boardId]/_components/selectionTools.tsx",
-                        lineNumber: 144,
+                        lineNumber: 286,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$hint$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Hint"], {
@@ -3121,45 +3281,47 @@ const SelectionTools = /*#__PURE__*/ _s((0, __TURBOPACK__imported__module__$5b$p
                             onClick: handleMagicSearch,
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$sparkle$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Sparkle$3e$__["Sparkle"], {}, void 0, false, {
                                 fileName: "[project]/app/board/[boardId]/_components/selectionTools.tsx",
-                                lineNumber: 151,
+                                lineNumber: 293,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/board/[boardId]/_components/selectionTools.tsx",
-                            lineNumber: 150,
+                            lineNumber: 292,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/board/[boardId]/_components/selectionTools.tsx",
-                        lineNumber: 149,
+                        lineNumber: 291,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/board/[boardId]/_components/selectionTools.tsx",
-                lineNumber: 143,
+                lineNumber: 285,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/board/[boardId]/_components/selectionTools.tsx",
-        lineNumber: 121,
+        lineNumber: 216,
         columnNumber: 7
     }, this);
-}, "MneVet0NjJ+i2f2qQVG1Apsqskw=", false, function() {
+}, "3qhxDHAehxDsKOPiEuwYIwytfZc=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$liveblocks$2f$react$2f$dist$2f$chunk$2d$63WTJCBG$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__$5f$useSelfSuspense__as__useSelf$3e$__["useSelf"],
         __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useDeleteLayers$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useDeleteLayers"],
         __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useSelectionBounds$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSelectionBounds"],
+        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$liveblocks$2f$react$2f$dist$2f$chunk$2d$63WTJCBG$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__$5f$useMutation__as__useMutation$3e$__["useMutation"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$liveblocks$2f$react$2f$dist$2f$chunk$2d$63WTJCBG$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__$5f$useMutation__as__useMutation$3e$__["useMutation"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$liveblocks$2f$react$2f$dist$2f$chunk$2d$63WTJCBG$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__$5f$useMutation__as__useMutation$3e$__["useMutation"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$liveblocks$2f$react$2f$dist$2f$chunk$2d$63WTJCBG$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__$5f$useMutation__as__useMutation$3e$__["useMutation"]
     ];
-})), "MneVet0NjJ+i2f2qQVG1Apsqskw=", false, function() {
+})), "3qhxDHAehxDsKOPiEuwYIwytfZc=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$liveblocks$2f$react$2f$dist$2f$chunk$2d$63WTJCBG$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__$5f$useSelfSuspense__as__useSelf$3e$__["useSelf"],
         __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useDeleteLayers$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useDeleteLayers"],
         __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useSelectionBounds$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSelectionBounds"],
+        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$liveblocks$2f$react$2f$dist$2f$chunk$2d$63WTJCBG$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__$5f$useMutation__as__useMutation$3e$__["useMutation"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$liveblocks$2f$react$2f$dist$2f$chunk$2d$63WTJCBG$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__$5f$useMutation__as__useMutation$3e$__["useMutation"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$liveblocks$2f$react$2f$dist$2f$chunk$2d$63WTJCBG$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__$5f$useMutation__as__useMutation$3e$__["useMutation"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$liveblocks$2f$react$2f$dist$2f$chunk$2d$63WTJCBG$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__$5f$useMutation__as__useMutation$3e$__["useMutation"]
@@ -3842,7 +4004,9 @@ const Canvas = ({ boardId })=>{
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$board$2f5b$boardId$5d2f$_components$2f$selectionTools$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectionTools"], {
                 camera: camera,
-                setLastUsedColor: setLastUsedColor
+                lastUsedColor: lastUsedColor,
+                setLastUsedColor: setLastUsedColor,
+                setCanvasState: setCanvasState
             }, void 0, false, {
                 fileName: "[project]/app/board/[boardId]/_components/canvas.tsx",
                 lineNumber: 448,

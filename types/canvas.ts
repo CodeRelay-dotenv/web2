@@ -15,6 +15,7 @@ export enum LayerType {
     Rectangle,
     Ellipse,
     Path,
+    AISuggestion,
 }
 
 export type RectangleLayer = {
@@ -67,6 +68,16 @@ export type NoteLayer = {
     fill: Color;
     value?: string;
 };
+
+export type AISuggestionLayer = {
+    type: LayerType.AISuggestion;
+    x: number;
+    y: number;
+    height: number;
+    width: number;
+    fill: Color;
+    value?: string;
+}
 
 export type Point = {
     x: number;
@@ -136,4 +147,5 @@ export type Layer =
     | EllipseLayer
     | PathLayer
     | TextLayer
-    | NoteLayer;
+    | NoteLayer
+    | AISuggestionLayer;

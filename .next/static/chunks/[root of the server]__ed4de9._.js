@@ -16,6 +16,7 @@ var LayerType = /*#__PURE__*/ function(LayerType) {
     LayerType[LayerType["Rectangle"] = 2] = "Rectangle";
     LayerType[LayerType["Ellipse"] = 3] = "Ellipse";
     LayerType[LayerType["Path"] = 4] = "Path";
+    LayerType[LayerType["AISuggestion"] = 5] = "AISuggestion";
     return LayerType;
 }({});
 var Side = /*#__PURE__*/ function(Side) {
