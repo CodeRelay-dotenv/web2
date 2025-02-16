@@ -226,7 +226,7 @@ export const SelectionTools = memo(
     const x = selectionBounds.width / 2 + selectionBounds.x + camera.x;
     const y = selectionBounds.y + camera.y;
     const x2 = selectionBounds.width + 20;
-    const y2 = selectionBounds.height;
+    const y2 = 0;
 
     return (
       <div
@@ -244,8 +244,8 @@ export const SelectionTools = memo(
             w-[450px] h-[200px] gap-4"
             style={{
               transform: `translate(
-                calc(${x2 + 90}px),
-                calc(${y2 + 150}px)
+                calc(${x2}px),
+                calc(${y2}px)
               )`,
             }}
           > Anything else you want to add to this search query?

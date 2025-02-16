@@ -155,12 +155,7 @@ export default function Question() {
                     View and answer questions from peers.
                 </span>
                 <div className="flex flex-row w-full justify-between">
-                    <Input
-                        className="w-64"
-                        placeholder="Search questions"
-                        value={searchName}
-                        onChange={(event) => setSearchName(event.target.value)}
-                    />
+                   
                     <Dialog open={isOpen} onOpenChange={setIsOpen}>
                         <DialogTrigger asChild>
                             <Button>

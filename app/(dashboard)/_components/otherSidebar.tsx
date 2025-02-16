@@ -18,6 +18,7 @@ export function OtherSidebar() {
   const searchParams = useSearchParams();
 
   const leaderboard = searchParams.get("leaderboard");
+  const video = searchParams.get("video");
 
   return (
     <div className="hidden lg:flex flex-col space-y-6 w-[206px] pl-5 pt-5">
@@ -32,11 +33,12 @@ export function OtherSidebar() {
 
       <div className="space-y-1 w-full">
         <Button
-          variant={leaderboard ? "ghost" : "secondary"}
+          variant={leaderboard || video ? "ghost" : "secondary"}
           asChild
           size="lg"
           className="font-normal justify-start px-2 w-full"
         >
+          
           <Link href="/">
             Questions
           </Link>
@@ -54,6 +56,21 @@ export function OtherSidebar() {
               },
             }}>
             Leaderboard
+          </Link>
+          </Button>
+          <Button
+          variant={video ? "secondary" : "ghost"}
+          asChild
+          size="lg"
+          className="font-normal justify-start px-2 w-full"
+        >
+          <Link href={{
+              pathname: "/",
+              query: {
+                video: "true",
+              },
+            }}>
+            VideoAI
           </Link>
         </Button>
       </div>

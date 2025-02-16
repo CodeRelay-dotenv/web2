@@ -7,14 +7,19 @@ import {
 } from "@clerk/nextjs";
 import { InviteButton } from "./inviteButton";
 import { SearchInput } from "./searchInput";
+import { useSearchParams } from "next/navigation";
 
 export function Navbar() {
+  const searchParams = useSearchParams();
+    const leaderboard = searchParams.get("leaderboard");
+    const VideoAI = searchParams.get("video");
+  
   const { organization } = useOrganization();
 
   return (
     <div className="flex items-center gap-x-4 p-5">
       <div className="hidden lg:flex lg:flex-1">
-        <SearchInput />
+       { leaderboard!=="true" && VideoAI!=="true" ?  <SearchInput /> : <></>}
       </div>
       <div className="block lg:hidden flex-1">
         <OrganizationSwitcher
