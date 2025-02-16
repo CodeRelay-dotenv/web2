@@ -244,8 +244,8 @@ export const SelectionTools = memo(
             w-[450px] h-[200px] gap-4"
             style={{
               transform: `translate(
-                calc(${x2 - 90}px),
-                calc(${y2 - 150}px)
+                calc(${x2 + 90}px),
+                calc(${y2 + 150}px)
               )`,
             }}
           > Anything else you want to add to this search query?
@@ -260,8 +260,8 @@ export const SelectionTools = memo(
               w-[600px] h-[200px] gap-4 animate-pulse"
               style={{
                 transform: `translate(
-                  calc(${x2 - 90}px),
-                  calc(${y2 - 150}px)
+                  calc(${x2 + 90}px),
+                  calc(${y2 + 150}px)
                 )`,
               }}
             >
